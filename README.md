@@ -11,7 +11,7 @@ Ultra-high resolution image segmentation has raised increasing interests in rece
 
 ## Method
 ![framework](https://github.com/liqiokkk/FCtL/blob/main/img/framework.png)
-![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
+
 ## Train and test
 We will release our code soon.
 
@@ -22,4 +22,4 @@ We will release our code soon.
 ...
 
 ## Results
-...
+![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
