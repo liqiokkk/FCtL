@@ -121,8 +121,6 @@ np.mean(np.nan_to_num(score_train["iou"][1:]))))
     # torch.cuda.empty_cache()
     
     cnt = 5 
-    if epoch >= 34:
-        cnt = 1
     if (epoch+1) % cnt == 0:
         torch.save(model.state_dict(), model_path + task_name + ".epoch" + str(epoch) + ".pth")
         
