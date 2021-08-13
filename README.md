@@ -41,3 +41,5 @@ Please sequentially finish the following steps:
 4.`bash train_all.sh`  
 ## Results
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
+## Citation
+If you use this code and our results for your research, please cite our paper.
