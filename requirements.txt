@@ -1,0 +1,5 @@
+numpy
+tqdm
+tensorboardX
+Pillow
+opencv-python==3.4.4.19
