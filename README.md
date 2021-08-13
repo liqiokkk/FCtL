@@ -19,13 +19,13 @@ Create folder named 'data', its structure is
 data/
 ├── train
    ├── Sat
-      ├── 
-      ├── 
+      ├── xxx_sat.jpg
+      ├── ...
    ├── Label
-      ├── 
-      ├──
-├── train
-├── train
+      ├── xxx_mask.png
+      ├── ...
+├── crossvali
+├── offical_crossvali
 ```
 ### test
 please download following pretrianed-model here  
