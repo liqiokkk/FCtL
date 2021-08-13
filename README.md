@@ -23,8 +23,8 @@ download following pretrianed-model here
 3.global.epoch.pth  
 `bash test_all.sh`  
 ### train
-please sequentially finish the following steps:
-1.`bash train_global.sh`   
+please sequentially finish the following steps:  
+1.`bash train_global.sh`  
 2.`bash train_pre.sh`(not necessary)  
 3.`bash train_medium.sh`  
 4.`bash train_all.sh`  
