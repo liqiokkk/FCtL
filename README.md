@@ -18,10 +18,10 @@ Create folder named 'data', its structure is
 
 ### test
 download following pretrianed-model here  
-all.epoch.pth  
-medium.epoch.pth  
-global.epoch.pth  
-bash test_all.sh  
+1.all.epoch.pth  
+2.medium.epoch.pth  
+3.global.epoch.pth  
+`bash test_all.sh`  
 ### train
 please sequentially finish the following steps:
 1.`bash train_global.sh`
