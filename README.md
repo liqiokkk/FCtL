@@ -12,13 +12,15 @@ Ultra-high resolution image segmentation has raised increasing interests in rece
 ## Method
 ![framework](https://github.com/liqiokkk/FCtL/blob/main/img/framework.png)
 
-## Train and test
-We will release our code soon.
+## Test and train
+Our codes are base on [GLNet](https://github.com/VITA-Group/GLNet)
+python>=3.6 and pytorch>=1.2.0
+Please install the dependencies: 'pip install -r requirements.txt'</br>
 
-### train
+### traintest
 ...
 
-### test
+### train
 ...
 
 ## Results
