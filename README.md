@@ -11,7 +11,7 @@ Ultra-high resolution image segmentation has raised increasing interests in rece
 ## Test and train
 Our codes are base on [GLNet](https://github.com/VITA-Group/GLNet)  
 python>=3.6 and pytorch>=1.2.0  
-Please install the dependencies: ·pip install -r requirements.txt·  
+Please install the dependencies: `pip install -r requirements.txt`  
 
 ### traintest
 ...  
