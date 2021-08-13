@@ -29,9 +29,7 @@ data/
 ```
 ### test
 Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
-1.all.epoch.pth  
-2.medium.epoch.pth  
-3.global.epoch.pth  
+1.all.epoch.pth  2.medium.epoch.pth  3.global.epoch.pth  
 `bash test_all.sh`  
 ### train
 Please sequentially finish the following steps:  
