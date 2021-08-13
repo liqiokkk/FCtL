@@ -28,13 +28,13 @@ data/
 ├── offical_crossvali
 ```
 ### test
-please download following pretrianed-model here  
+Please download following pretrianed-model here  
 1.all.epoch.pth  
 2.medium.epoch.pth  
 3.global.epoch.pth  
 `bash test_all.sh`  
 ### train
-please sequentially finish the following steps:  
+Please sequentially finish the following steps:  
 1.`bash train_global.sh`  
 2.`bash train_pre.sh`(not necessary)  
 3.`bash train_medium.sh`  
