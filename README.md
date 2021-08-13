@@ -11,11 +11,13 @@ Ultra-high resolution image segmentation has raised increasing interests in rece
 ## Test and train
 Our codes are base on [GLNet](https://github.com/VITA-Group/GLNet)  
 python>=3.6 and pytorch>=1.2.0  
-Please install the dependencies: `pip install -r requirements.txt`  
-
-### traintest
-...  
+Please install the dependencies: `pip install -r requirements.txt`
+### Dataset
+Please register and download the Deep Globe "Land Cover Classification" dataset [here](https://competitions.codalab.org/competitions/18468):
+### test
+download following pretrianed-model here
+bash test_all.sh  
 ### train
-...  
+  
 ## Results
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
