@@ -9,7 +9,6 @@ class _FCtL(nn.Module):
     def __init__(self, inplanes, planes, lr_mult, weight_init_scale):
 
         conv_nd = nn.Conv2d
-        bn_nd = nn.BatchNorm2d
 
         super(_FCtL, self).__init__()
 
