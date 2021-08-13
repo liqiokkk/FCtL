@@ -28,7 +28,7 @@ data/
 ├── train
 ```
 ### test
-download following pretrianed-model here  
+please download following pretrianed-model here  
 1.all.epoch.pth  
 2.medium.epoch.pth  
 3.global.epoch.pth  
