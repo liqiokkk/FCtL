@@ -1,6 +1,6 @@
 export CUDA_VISIBLE_DEVICES=0
 python train_deep_globe.py \
---task_name "pre" \
+--task_name "Afcn" \
 --mode 1 \
 --dataset 1 \
 --batch_size 6 \
