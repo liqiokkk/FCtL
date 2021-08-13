@@ -28,7 +28,7 @@ data/
 ├── offical_crossvali
 ```
 ### test
-Please download following pretrianed-model here  
+Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
 1.all.epoch.pth  
 2.medium.epoch.pth  
 3.global.epoch.pth  
