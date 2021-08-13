@@ -14,10 +14,19 @@ python>=3.6 and pytorch>=1.2.0
 Please install the dependencies: `pip install -r requirements.txt`
 ### Dataset
 Please register and download the Deep Globe "Land Cover Classification" dataset [here](https://competitions.codalab.org/competitions/18468):
+Create folder named 'data', its structure is  
+
 ### test
-download following pretrianed-model here
+download following pretrianed-model here  
+all.epoch.pth  
+medium.epoch.pth  
+global.epoch.pth  
 bash test_all.sh  
 ### train
-  
+please sequentially finish the following steps:
+1.`bash train_global.sh`
+2.`bash train_pre.sh`(not necessary)  
+3.`bash train_medium.sh`  
+4.`bash train_all.sh`  
 ## Results
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
