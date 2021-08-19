@@ -13,7 +13,7 @@ Our codes are based on [GLNet](https://github.com/VITA-Group/GLNet)
 python>=3.6 and pytorch>=1.2.0  
 Please install the dependencies: `pip install -r requirements.txt`
 ### dataset
-Please register and download Inria Aerial dataset [here](https://project.inria.fr/aerialimagelabeling/):  
+Please register and download Inria Aerial dataset [here](https://project.inria.fr/aerialimagelabeling/)(The code needs a little modification in DeepGlobe because we use the global context)  
 Create folder named 'data_1', its structure is  
 ```
 data_1/
