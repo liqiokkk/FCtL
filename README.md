@@ -38,6 +38,9 @@ Please sequentially finish the following steps:
 3.`bash train_B15.sh`(get context)  
 4.`bash train_all.sh`  
 ## Results
+### DeepGlobe
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
+### Inria Aerial  
+
 ## Citation
 If you use this code and our results for your research, please cite our paper.
