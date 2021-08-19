@@ -35,7 +35,7 @@ class Options():
 
     def parse(self):
         args = self.parser.parse_args()
-        args.num_epochs = 50
+        args.num_epochs = 100
         args.start = 0
         args.lens = 50
         args.lr = 5e-5
