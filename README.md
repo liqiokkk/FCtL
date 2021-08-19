@@ -34,8 +34,8 @@ Please download following pretrianed-model [here](https://drive.google.com/drive
 ### train
 Please sequentially finish the following steps:   
 1.`bash train_pre.sh`(not necessary)  
-2.`bash train_B10.sh`  
-3.`bash train_B15.sh`  
+2.`bash train_B10.sh`(get context)  
+3.`bash train_B15.sh`(get context)  
 4.`bash train_all.sh`  
 ## Results
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
