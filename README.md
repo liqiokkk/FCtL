@@ -13,28 +13,27 @@ Our codes are base on [GLNet](https://github.com/VITA-Group/GLNet)
 python>=3.6 and pytorch>=1.2.0  
 Please install the dependencies: `pip install -r requirements.txt`
 ### dataset
-Please register and download the Deep Globe "Land Cover Classification" dataset [here](https://competitions.codalab.org/competitions/18468):  
+Please register and download the Inria Aerial dataset [here](https://project.inria.fr/aerialimagelabeling/):  
 Create folder named 'data', its structure is  
 ```
 data/
 ├── train
    ├── Sat
-      ├── xxx_sat.jpg
+      ├── xxx_sat.tif
       ├── ...
    ├── Label
-      ├── xxx_mask.png(Single channel:0-6)
+      ├── xxx_mask.png(Single channel:0-1)
       ├── ...
 ├── crossvali
 ├── offical_crossvali
 ```
 ### test
 Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
-1.all.epoch.pth  2.medium.epoch.pth  3.global.epoch.pth  
+1.all.epoch.pth  2.B10.epoch.pth  3.B15.epoch.pth  
 `bash test_all.sh`  
 ### train
-Please sequentially finish the following steps:  
-1.`bash train_global.sh`  
-2.`bash train_pre.sh`(not necessary)  
+Please sequentially finish the following steps:   
+1.`bash train_pre.sh`(not necessary)  
 3.`bash train_medium.sh`  
 4.`bash train_all.sh`  
 ## Results
