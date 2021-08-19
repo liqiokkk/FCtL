@@ -16,7 +16,7 @@ Please install the dependencies: `pip install -r requirements.txt`
 Please register and download Inria Aerial dataset [here](https://project.inria.fr/aerialimagelabeling/):  
 Create folder named 'data', its structure is  
 ```
-data/
+data_1/
 ├── train
    ├── Sat
       ├── xxx_sat.tif
