@@ -41,6 +41,6 @@ Please sequentially finish the following steps:
 ### DeepGlobe
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
 ### Inria Aerial  
-
+![result1](https://github.com/liqiokkk/FCtL/blob/main/img/result1.png)
 ## Citation
 If you use this code and our results for your research, please cite our paper.
