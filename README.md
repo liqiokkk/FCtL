@@ -30,13 +30,13 @@ data_1/
 ### test
 Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
 1.all.epoch.pth  2.B10.epoch.pth  3.B15.epoch.pth  
-`bash test_all.sh`  
+`bash test.sh`  
 ### train
 Please sequentially finish the following steps:   
 1.`bash train_pre.sh`(not necessary)  
 2.`bash train_B10.sh`(get medium context)  
 3.`bash train_B15.sh`(get large context)  
-4.`bash train_all.sh`  
+4.`bash train.sh`  
 ## Results
 ### DeepGlobe
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
