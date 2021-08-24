@@ -6,9 +6,8 @@ from .helpers import get_upsampling_weight
 import torch
 from itertools import chain
 from .FCtL import FCtL
-import numpy as np
-from einops import rearrange
-        
+
+    
 class MiniFCN8(BaseModel):
     def __init__(self, num_classes, pretrained=True):
         super(MiniFCN8, self).__init__()
@@ -64,19 +63,7 @@ class FCN8(BaseModel):
             self.big_pool5 = nn.Sequential(*self.features[24:])
         if self.mode == 2 or self.mode == 3:
             self.big_attention = FCtL(512, 512)
-            if self.mode == 3:
-                self.big_attention2 = FCtL(512, 512)
-                self.big_attention3 = FCtL(512, 512)
-                conv_nd = nn.Conv2d
-                self.in_1 = conv_nd(512, 512, kernel_size=1)
-                self.in_2 = conv_nd(512, 512, kernel_size=1)
-                self.in_3 = conv_nd(512, 512, kernel_size=1)
-                self.trans = conv_nd(512*3, 512*3, kernel_size=1)
-                self.out_1 = conv_nd(512, 512, kernel_size=1)
-                self.out_2 = conv_nd(512, 512, kernel_size=1)
-                self.out_3 = conv_nd(512, 512, kernel_size=1)
-                self.softmax_H = nn.Softmax(dim=0)
-                
+
         # Adjust the depth of pool3 and pool4 to num_classe
         self.adj_pool3 = nn.Conv2d(256, num_classes, kernel_size=1)
         self.adj_pool4 = nn.Conv2d(512, num_classes, kernel_size=1)
@@ -122,7 +109,7 @@ class FCN8(BaseModel):
         if freeze_bn: self.freeze_bn()
         if freeze_backbone: 
             set_trainable([self.pool3, self.pool4, self.pool5], False)
-        
+
     def forward(self, x, pool5_10=None, pool5_15=None, y=None):
         imh_H, img_W = x.size()[2], x.size()[3]
         # Forward the image
@@ -134,26 +121,8 @@ class FCN8(BaseModel):
             pool4_10 = self.big_pool4(pool3_10)
             pool5_10 = self.big_pool5(pool4_10)
         if self.mode == 2 or self.mode == 3:
-            if self.mode == 2:
-                att1 = self.big_attention(pool5, pool5_10)
-                pool5 = pool5 + att1
-            else:
-                att1 = self.big_attention(pool5, pool5_10)
-                att2 = self.big_attention2(pool5, pool5_15)
-                att3 = self.big_attention3(pool5, pool5)
-                H_1 = self.in_1(att1)
-                H_2 = self.in_2(att2)
-                H_3 = self.in_3(att3)
-                H_cat = torch.cat((H_1, H_2, H_3), 1)
-                H_tra = self.trans(H_cat)
-                H_spl = torch.split(H_tra, 512, dim=1)
-                H_4 = torch.sigmoid(self.out_1(H_spl[0]))
-                H_5 = torch.sigmoid(self.out_2(H_spl[1]))
-                H_6 = torch.sigmoid(self.out_3(H_spl[2]))
-                H_st = torch.stack((H_4, H_5, H_6), 0)
-                H_all = self.softmax_H(H_st)
-                out = H_all[0] * att1 + H_all[1] * att2 +  H_all[2] * att3
-                pool5 = pool5 + out
+            pool5 = self.big_attention(pool5, pool5_10, pool5_15)
+
         output = self.output(pool5)
         # Get the outputs and upsmaple them
         up_output = self.up_output(output) #7*36*36
