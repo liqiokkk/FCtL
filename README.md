@@ -44,3 +44,13 @@ Please sequentially finish the following steps:
 ![result1](https://github.com/liqiokkk/FCtL/blob/main/img/result1.png)
 ## Citation
 If you use this code and our results for your research, please cite our paper.
+```
+@InProceedings{Li_2021_ICCV,
+    author    = {Li, Qi and Yang, Weixiang and Liu, Wenxi and Yu, Yuanlong and He, Shengfeng},
+    title     = {From Contexts to Locality: Ultra-High Resolution Image Segmentation via Locality-Aware Contextual Correlation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {7252-7261}
+}
+```
