@@ -1,5 +1,5 @@
 # From Contexts to Locality: Ultra-high Resolution Image Segmentation via Locality-aware Contextual Correlation
-[From Contexts to Locality: Ultra-high Resolution Image Segmentation via Locality-aware Contextual Correlation](https://arxiv.org/abs/2109.02580)  
+[From Contexts to Locality: Ultra-high Resolution Image Segmentation via Locality-aware Contextual Correlation](https://openaccess.thecvf.com/content/ICCV2021/papers/Li_From_Contexts_to_Locality_Ultra-High_Resolution_Image_Segmentation_via_Locality-Aware_ICCV_2021_paper.pdf)  
 Qi Li, Weixiang Yang, Wenxi Liu, Yuanlong Yu, Shengfeng He  
 Accepted to ICCV 2021
 ## Abstract
