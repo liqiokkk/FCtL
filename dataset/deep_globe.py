@@ -17,12 +17,22 @@ def classToRGB(dataset, label):
     l, w = label.shape[0], label.shape[1]
     colmap = np.zeros(shape=(l, w, 3)).astype(np.float32)
     if dataset == 1:
-        pass
-    else:
         indices = np.where(label == 1)
+        colmap[indices[0].tolist(), indices[1].tolist(), :] = [0, 255, 255]
+        indices = np.where(label == 2)
+        colmap[indices[0].tolist(), indices[1].tolist(), :] = [255, 255, 0]
+        indices = np.where(label == 3)
+        colmap[indices[0].tolist(), indices[1].tolist(), :] = [255, 0, 255]
+        indices = np.where(label == 4)
+        colmap[indices[0].tolist(), indices[1].tolist(), :] = [0, 255, 0]
+        indices = np.where(label == 5)
+        colmap[indices[0].tolist(), indices[1].tolist(), :] = [0, 0, 255]
+        indices = np.where(label == 6)
         colmap[indices[0].tolist(), indices[1].tolist(), :] = [255, 255, 255]
         indices = np.where(label == 0)
         colmap[indices[0].tolist(), indices[1].tolist(), :] = [0, 0, 0]
+    else:
+        pass
     transform = ToTensor();
     #     plt.imshow(colmap)
     #     plt.show()
@@ -67,6 +77,7 @@ class DeepGlobe(data.Dataset):
         self.ids = ids
         
         self.color_jitter = transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.04)
+#         self.classdict = {1: "urban", 2: "agriculture", 3: "rangeland", 4: "forest", 5: "water", 6: "barren", 0: "unknown"}
 
     def __getitem__(self, index):
         sample = {}
@@ -74,10 +85,10 @@ class DeepGlobe(data.Dataset):
         image = Image.open(os.path.join(self.root, "Sat/" + self.ids[index])) # w, h
         sample['image'] = image
         if self.label:
-            if self.dataset == 1 :
-                pass
+            if self.dataset == 1:
+                label = Image.open(os.path.join(self.root, 'Label/' + self.ids[index].replace('_sat.jpg', '_mask.png')))
             else:
-                label = Image.open(os.path.join(self.root, 'Label/' + self.ids[index].replace('_sat.tif', '_mask.png')))
+                pass
             sample['label'] = label
         if self.transform and self.label:
             image, label = self._transform(image, label)

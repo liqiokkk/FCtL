@@ -1,8 +1,8 @@
 export CUDA_VISIBLE_DEVICES=0
 python train_deep_globe.py \
---task_name "Bfcn" \
+--task_name "pre" \
 --mode 1 \
---dataset 2 \
+--dataset 1 \
 --batch_size 6 \
 --sub_batch_size 6 \
 --size_p 508 \

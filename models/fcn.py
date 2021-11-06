@@ -7,7 +7,6 @@ import torch
 from itertools import chain
 from .FCtL import FCtL
 
-    
 class MiniFCN8(BaseModel):
     def __init__(self, num_classes, pretrained=True):
         super(MiniFCN8, self).__init__()
@@ -34,12 +33,11 @@ class MiniFCN8(BaseModel):
         pool5_2 = self.big_pool5(pool4_2)
         
         return pool5_2
-
-                
+    
 class FCN8(BaseModel):
     def __init__(self, num_classes, mode=1, pretrained=True, freeze_bn=False, freeze_backbone=False):
         super(FCN8, self).__init__()
-        
+
         self.mode = mode
         
         self.vgg = models.vgg16(pretrained)
@@ -57,12 +55,26 @@ class FCN8(BaseModel):
         self.pool3 = nn.Sequential(*self.features[:17])
         self.pool4 = nn.Sequential(*self.features[17:24])
         self.pool5 = nn.Sequential(*self.features[24:])
-        if self.mode == 2:     
+        
+        if self.mode == 2:
             self.big_pool3 = nn.Sequential(*self.features[:17])
             self.big_pool4 = nn.Sequential(*self.features[17:24])
             self.big_pool5 = nn.Sequential(*self.features[24:])
-        if self.mode == 2 or self.mode == 3:
-            self.big_attention = FCtL(512, 512)
+            self.big = FCtL(512, 512)
+
+        if self.mode == 4:
+            self.local = FCtL(512, 512)
+            self.medium = FCtL(512, 512)
+            self.large = FCtL(512, 512)
+            conv_nd = nn.Conv2d
+            self.in_1 = conv_nd(512, 512, kernel_size=1)
+            self.in_2 = conv_nd(512, 512, kernel_size=1)
+            self.in_3 = conv_nd(512, 512, kernel_size=1)
+            self.trans = conv_nd(512*3, 512*3, kernel_size=1)
+            self.out_1 = conv_nd(512, 512, kernel_size=1)
+            self.out_2 = conv_nd(512, 512, kernel_size=1)
+            self.out_3 = conv_nd(512, 512, kernel_size=1)
+            self.softmax_H = nn.Softmax(dim=0)
 
         # Adjust the depth of pool3 and pool4 to num_classe
         self.adj_pool3 = nn.Conv2d(256, num_classes, kernel_size=1)
@@ -110,19 +122,44 @@ class FCN8(BaseModel):
         if freeze_backbone: 
             set_trainable([self.pool3, self.pool4, self.pool5], False)
 
-    def forward(self, x, pool5_10=None, pool5_15=None, y=None):
+    def forward(self, x, flag=0 ,pool5_2=None, pool5_glo=None,y=None):
         imh_H, img_W = x.size()[2], x.size()[3]
         # Forward the image
         pool3 = self.pool3(x)
         pool4 = self.pool4(pool3)
         pool5 = self.pool5(pool4)
-        if self.mode == 2:
-            pool3_10 = self.big_pool3(y)
-            pool4_10 = self.big_pool4(pool3_10)
-            pool5_10 = self.big_pool5(pool4_10)
-        if self.mode == 2 or self.mode == 3:
-            pool5 = self.big_attention(pool5, pool5_10, pool5_15)
+        if flag == 1:
+            return pool3, pool4, pool5
 
+        if self.mode == 2:
+            pool3_2 = self.big_pool3(y)
+            pool4_2 = self.big_pool4(pool3_2)
+            pool5_2 = self.big_pool5(pool4_2)
+            pool5 = pool5 + self.big(pool5, pool5_2)
+
+        if self.mode == 4: 
+            batch = x.size()[0]
+            glo = pool5_glo
+            for i in range(batch-1):
+                glo = torch.cat((glo,pool5_glo), dim=0)
+            
+            cc_local = self.local(pool5, pool5)
+            cc_medium = self.medium(pool5, pool5_2)
+            cc_large = self.large(pool5, glo)
+            H_1 = self.in_1(cc_local)
+            H_2 = self.in_2(cc_medium)
+            H_3 = self.in_3(cc_large)
+            H_cat = torch.cat((H_1, H_2, H_3), 1)
+            H_tra = self.trans(H_cat)
+            H_spl = torch.split(H_tra, 512, dim=1)
+            H_4 = torch.sigmoid(self.out_1(H_spl[0]))
+            H_5 = torch.sigmoid(self.out_2(H_spl[1]))
+            H_6 = torch.sigmoid(self.out_3(H_spl[2]))
+            H_st = torch.stack((H_4, H_5, H_6), 0)
+            H_all = self.softmax_H(H_st)
+            out = H_all[0] * cc_local + H_all[1] * cc_medium +  H_all[2] * cc_large
+            pool5 = pool5 + out
+ 
         output = self.output(pool5)
         # Get the outputs and upsmaple them
         up_output = self.up_output(output) #7*36*36
