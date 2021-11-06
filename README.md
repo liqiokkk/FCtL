@@ -13,30 +13,30 @@ Our code is based on [GLNet](https://github.com/VITA-Group/GLNet)
 python>=3.6 and pytorch>=1.2.0  
 Please install the dependencies: `pip install -r requirements.txt`
 ### dataset
-Please register and download [Inria Aerial](https://project.inria.fr/aerialimagelabeling/) dataset(The code needs a little modification in [DeepGlobe](https://competitions.codalab.org/competitions/18468) because we use the global context)  
-Create folder named 'data_1', its structure is  
+Please register and download [DeepGlobe](https://competitions.codalab.org/competitions/18468) dataset
+Create folder named 'data', its structure is  
 ```
-data_1/
+data/
 ├── train
    ├── Sat
-      ├── xxx_sat.tif
+      ├── xxx_sat.jpg
       ├── ...
    ├── Label
-      ├── xxx_mask.png(Single channel:0-1)
+      ├── xxx_mask.png(channel:0-6)
       ├── ...
 ├── crossvali
 ├── offical_crossvali
 ```
 ### test
-Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
-1.all.epoch.pth  2.B10.epoch.pth  3.B15.epoch.pth  
-`bash test.sh`  
+Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1OPsNQ-33LMBaiBytr_bX9sDFXjhZIlsm?usp=sharing)  
+1.all.epoch.pth  2.medium.epoch.pth  3.global.epoch.pth  
+`bash test_all.sh`  
 ### train
 Please sequentially finish the following steps:   
 1.`bash train_pre.sh`(not necessary)  
-2.`bash train_B10.sh`(get medium context)  
-3.`bash train_B15.sh`(get large context)  
-4.`bash train.sh`  
+2.`bash train_medium.sh`(get medium context)  
+3.`bash train_global.sh`(get large context)  
+4.`bash train_all.sh`  
 ## Results
 ### DeepGlobe
 ![result](https://github.com/liqiokkk/FCtL/blob/main/img/result.png)
