@@ -22,7 +22,7 @@ data_1/
       ├── xxx_sat.tif
       ├── ...
    ├── Label
-      ├── xxx_mask.png(Single channel:0-1)
+      ├── xxx_mask.png(two values:0-1)
       ├── ...
 ├── crossvali
 ├── offical_crossvali
