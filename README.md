@@ -22,7 +22,7 @@ data/
       ├── xxx_sat.jpg
       ├── ...
    ├── Label
-      ├── xxx_mask.png(channel:0-6)
+      ├── xxx_mask.png(0-6)
       ├── ...
 ├── crossvali
 ├── offical_crossvali
