@@ -25,7 +25,7 @@ if dataset == 1:
     args.log_path = "./runs/"
 else:
     pass
-n_class = args.n_class #7
+n_class = args.n_class 
 print("n_class:",n_class)
 
 torch.backends.cudnn.deterministic = True
@@ -65,10 +65,10 @@ print('test_len:',len(ids_test))
 print('val_len:',len(ids_val))  
 
 ##### sizes are (w, h) ##############################
-size_p = (args.size_p, args.size_p) # cropped local patch size 508
-size_g = (args.size_g, args.size_g) # resize global image size 508
+size_p = (args.size_p, args.size_p) 
+size_g = (args.size_g, args.size_g) 
 context = args.context # context
-sub_batch_size = args.sub_batch_size # batch size for train local patches 6
+sub_batch_size = args.sub_batch_size 
 ###################################
 print("creating models......")
 
