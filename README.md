@@ -13,7 +13,7 @@ Our code is based on [GLNet](https://github.com/VITA-Group/GLNet)
 python>=3.6 and pytorch>=1.2.0  
 Please install the dependencies: `pip install -r requirements.txt`
 ### dataset
-Please register and download [Inria Aerial](https://project.inria.fr/aerialimagelabeling/) dataset(The code needs a little modification in [DeepGlobe](https://competitions.codalab.org/competitions/18468) because we use the global context)  
+Please register and download [Inria Aerial](https://project.inria.fr/aerialimagelabeling/) dataset
 Create folder named 'data_1', its structure is  
 ```
 data_1/
@@ -28,7 +28,7 @@ data_1/
 ├── offical_crossvali
 ```
 ### test
-Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1A42v76DQCzdNwtM0TKx1L05EJuhND7Nt?usp=sharing)  
+Please download following pretrianed-model [here](https://drive.google.com/drive/folders/1gOOUsHXRe_QNzc3F2DD1g1KO4T7KKETq?usp=sharing)  
 1.all.epoch.pth  2.B10.epoch.pth  3.B15.epoch.pth  
 `bash test.sh`  
 ### train
