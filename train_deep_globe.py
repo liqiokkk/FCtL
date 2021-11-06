@@ -60,12 +60,11 @@ dataset_test = DeepGlobe(dataset, os.path.join(data_path, "offical_crossvali"), 
 dataloader_test = torch.utils.data.DataLoader(dataset=dataset_test, batch_size=batch_size, num_workers=num_worker, collate_fn=collate_test, shuffle=False, pin_memory=True)
 dataset_val = DeepGlobe(dataset, os.path.join(data_path, "crossvali"), ids_val, label=True)
 dataloader_val = torch.utils.data.DataLoader(dataset=dataset_val, batch_size=batch_size, num_workers=num_worker, collate_fn=collate, shuffle=False, pin_memory=True)
-print('train_len:',len(ids_train)) #76
-print('test_len:',len(ids_test)) #24
-print('val_len:',len(ids_val)) #35 
+print('train_len:',len(ids_train)) 
+print('test_len:',len(ids_test)) 
+print('val_len:',len(ids_val))  
 
 ##### sizes are (w, h) ##############################
-# make sure margin / 32 is over 1.5 AND size_g is divisible by 4
 size_p = (args.size_p, args.size_p) # cropped local patch size 508
 size_g = (args.size_g, args.size_g) # resize global image size 508
 context = args.context # context
