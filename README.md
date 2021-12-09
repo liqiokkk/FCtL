@@ -43,7 +43,7 @@ Please sequentially finish the following steps:
 ### Inria Aerial  
 ![result1](https://github.com/liqiokkk/FCtL/blob/main/img/result1.png)
 ## Citation
-If you use this code and our results for your research, please cite our paper.
+If you use this code or our results for your research, please cite our paper.
 ```
 @inproceedings{li2021contexts,
   title={From Contexts to Locality: Ultra-high Resolution Image Segmentation via Locality-aware Contextual Correlation},
